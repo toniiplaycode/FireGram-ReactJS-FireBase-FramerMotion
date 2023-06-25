@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { projectFirestore } from "../firebase/config";
 
 const useFirestore = (collection) => {
-    const [docs, setDocs] = useState([]);
-    //  Biến docs sẽ chứa các tài liệu (documents) được lấy từ Firestore.
-
+    const [docs, setDocs] = useState([]); //  Biến docs sẽ chứa các tài liệu (documents) được lấy từ Firestore.
+    
     useEffect(() => {
         const unsub = projectFirestore.collection(collection)
             .orderBy('createdAt', 'desc')

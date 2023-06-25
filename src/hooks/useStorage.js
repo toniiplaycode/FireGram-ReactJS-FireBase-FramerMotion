@@ -12,7 +12,7 @@ const useStorage = (file) => {
     const collectionRef = projectFirestore.collection('images'); // tham chiếu đến collection "images"
 
     // tải ảnh lên firebase storage
-    storageRef.put(file).on('state_changed', (snap) => {
+    const unsub = storageRef.put(file).on('state_changed', (snap) => {
         let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
         setProgress(percentage);
     }, (err) => {
@@ -23,6 +23,9 @@ const useStorage = (file) => {
         await collectionRef.add({ url, createdAt });
         setUrl(url);
     });
+
+    return () => unsub(); // phải dùng cleanup function để nó không bị duplicated khi upload ảnh lên
+
     }, [file]);
 
     return { progress, error, url};
