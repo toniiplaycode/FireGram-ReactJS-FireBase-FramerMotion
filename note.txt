@@ -1,0 +1,2 @@
+- đôi chút về firebase (https://chat.openai.com/c/c3defd8d-1a92-45e9-a087-51e178a4568d)
+- cách deploy reactJS + firebase (https://www.youtube.com/watch?v=98TXDLZLyNs&t=1s&ab_channel=SmallAcademy)
